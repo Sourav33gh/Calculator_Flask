@@ -1,5 +1,5 @@
-from flask import Flask,request,render_template  # "flask" is module # "Flask" is class
-
+from flask import Flask,request,render_template,jsonify  # "flask" is module # "Flask" is class
+import json
 ## I need to create an 'object' for this particular class 'Flask'
 
 obj=Flask(__name__)  # Inside the parentheses u have to put module name and it is "main" which stores in "name" variable
@@ -18,14 +18,14 @@ def math_operation():    # Inside this route we r going to create method and the
     number2=request.json["number2"]                         
 
     if operation=="add":
-        result=number1+number2
+        result=int(number1)+int(number2)
     elif operation=="substraction":
-        result=number1-number2
+        result=int(number1)-int(number2)
     elif operation=="multiplication":
-        result=number1*number2
+        result=int(number1)*int(number2)
     else:
-        result=number1/number2
-        return result
+        result=int(number1)/int(number2)
+    return jsonify(result)
 
 
 
